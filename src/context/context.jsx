@@ -7,7 +7,7 @@ export const Context = createContext();
 
 const ContextProvider = ({ children }) => {
   const [input, setInput] = useState("");
-  const [resentPrompt, setResentPrompt] = useState("");
+  const [recentPrompt, setRecentPrompt] = useState("");
   const [prevPrompts, setPrevPrompts] = useState([]);
   const [showResponse, setShowResponse] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ const ContextProvider = ({ children }) => {
     setResponseData("");
     setLoading(true);
     setShowResponse(true);
-    setResentPrompt(input);
+    setRecentPrompt(input);
     const response = await run(input);
 
     setResponseData(response);
@@ -28,8 +28,8 @@ const ContextProvider = ({ children }) => {
   const contextValue = {
     input,
     setInput,
-    resentPrompt,
-    setResentPrompt,
+    recentPrompt,
+    setRecentPrompt,
     prevPrompts,
     setPrevPrompts,
     showResponse,
