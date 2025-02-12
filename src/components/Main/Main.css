@@ -130,4 +130,74 @@
 }
 
 .response-title {
+  margin: 40px 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.chat-response img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.response-data {
+  display: flex;
+  align-items: start;
+  gap: 20px;
+}
+
+.response-data p {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.loader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.loader hr {
+  border-radius: 4px;
+  border: none;
+  background-color: #f6f7f8;
+  background: linear-gradient(to right, #9ed7ff, #ffffff, #9ed7ff);
+  background-size: 800px 50px;
+  height: 20px;
+  animation: loader 3s linear infinite;
+}
+
+@keyframes loader {
+  0% {
+    background-position: -800px 0px;
+  }
+  100% {
+    background-position: 800px 0px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-bottom input {
+    flex: none;
+    width: 150px;
+  }
+
+  .main-bottom img {
+    width: 20px;
+  }
+
+  .prompt-box {
+    padding: 5px 10px !important;
+  }
+
+  .prompt-box div {
+    gap: 5px !important;
+  }
+
+  /* .main .card {
+    height: 150px;
+  } */
 }

@@ -22,7 +22,7 @@ const Main = () => {
       <div className="main-container">
         {!showResponse ? (
           <>
-            <p className="recent-prompt">{recentPrompt}</p>{" "}
+            {/* <p className="recent-prompt">{recentPrompt}</p>{" "} */}
             <div className="greeting">
               <p>
                 <span>Hello, Mike!</span>
@@ -56,7 +56,16 @@ const Main = () => {
             </div>
             <div className="response-data">
               <img src={assets.gemini_icon} alt="genimi" />
-              <p dangerouslySetInnerHTML={{ __html: responseData }}></p>
+              {loading ? (
+                <div className="loader">
+                  <hr />
+                  <hr />
+                  <hr />
+                  <hr />
+                </div>
+              ) : (
+                <p dangerouslySetInnerHTML={{ __html: responseData }}></p>
+              )}
             </div>
           </div>
         )}
@@ -71,11 +80,13 @@ const Main = () => {
             <div className="input-controls">
               <img src={assets.gallery_icon} alt="add gallery icon" />
               <img src={assets.mic_icon} alt="mic icon" />
-              <img
-                onClick={() => onSend()}
-                src={assets.send_icon}
-                alt="send icon"
-              />
+              {input && (
+                <img
+                  onClick={() => onSend()}
+                  src={assets.send_icon}
+                  alt="send icon"
+                />
+              )}
             </div>
           </div>
           <p className="disclaimer">

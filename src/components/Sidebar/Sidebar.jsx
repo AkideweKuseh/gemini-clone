@@ -1,8 +1,15 @@
 import "./Sidebar.css";
 import { assets } from "../../assets/assets";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Context } from "../../context/context";
 const Sidebar = () => {
   const [sidebarExtended, setSidbarExtended] = useState(false);
+  const { onSend, prevPrompts, setRecentPrompt, newChat } = useContext(Context);
+
+  const loadPrompt = async (prompt) => {
+    setRecentPrompt(prompt);
+    await onSend(prompt);
+  };
   return (
     <div className="sidebar">
       <div className="top">
@@ -14,17 +21,25 @@ const Sidebar = () => {
             setSidbarExtended(!sidebarExtended);
           }}
         />
-        <div className="new-chat">
+        <div onClick={() => newChat()} className="new-chat">
           <img src={assets.plus_icon} alt="new chat" />
           {sidebarExtended && <p>New Chat</p>}
         </div>
         {sidebarExtended && (
           <div className="recent">
             <p className="recent-title">Recent</p>
-            <div className="recent-chat">
-              <img src={assets.message_icon} alt="recent chat icon" />
-              <p>What is react...</p>
-            </div>
+            {prevPrompts.map((prompt, index) => {
+              return (
+                <div
+                  onClick={() => loadPrompt(prompt)}
+                  className="recent-chat"
+                  key={index}
+                >
+                  <img src={assets.message_icon} alt="recent chat icon" />
+                  <p>{prompt.slice(0, 16)} ...</p>
+                </div>
+              );
+            })}
           </div>
         )}
       </div>
