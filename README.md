@@ -43,7 +43,7 @@ This is a React project that I worked on to sharpen my React skills and gain exp
 
 ## Technologies Used
 
-[x] React
-[x] Vite
-[x] ESLint
-[x] Genimi API
+- React
+- Vite
+- ESLint
+- Genimi API
